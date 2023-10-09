@@ -7,7 +7,39 @@ class Problem1 {
 
         if(!isValidPage(pobi) || !isValidPage(crong)) return -1;
 
+        int pobiScore = getMaxNumber(pobi);
+        int crongScore = getMaxNumber(crong);
+
+        if(pobiScore > crongScore) return 1;
+        if(pobiScore < crongScore) return 2;
         return 0;
+    }
+
+    private static int getMaxNumber(List<Integer> pages) {
+        int max = Integer.MIN_VALUE;
+        for (int page : pages) {
+            int result = digitNumAddOrMultiCalculator(digitSplit(page));
+            if (max < result) {
+                max = result;
+            }
+        }
+        return max;
+    }
+
+    private static int digitNumAddOrMultiCalculator(String[] strings) {
+        int add = 0;
+        int multi = 1;
+        for (String digit : strings) {
+            int digitNum = Integer.parseInt(digit);
+            add += digitNum;
+            multi *= digitNum;
+        }
+        return Math.max(add, multi);
+    }
+
+
+    private static String[] digitSplit(int page) {
+       return String.valueOf(page).split("");
     }
 
     private static boolean isValidPage(List<Integer> pages) {
