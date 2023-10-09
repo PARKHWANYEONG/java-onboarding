@@ -11,13 +11,20 @@ class Problem1 {
     }
 
     private static boolean isValidPage(List<Integer> pages) {
-        if(isContinueos(pages)){
+        if(!isContinueos(pages)){
             return false;
         }
-        
+        if (!isOddPage(pages.get(0))) {
+            return false;
+        }
     }
+
+    private static boolean isOddPage(Integer integer) {
+        return integer % 2 == 1;
+    }
+
     private static boolean isContinueos(List<Integer> pages) {
-        return (pages.get(1) - pages.get(0)) != 1;
+        return (pages.get(1) - pages.get(0)) == 1;
     }
 
 }
