@@ -17,6 +17,19 @@ class Problem1 {
         if (!isOddPage(pages.get(0))) {
             return false;
         }
+        if (!isValidRange(pages)) {
+            return false;
+        }
+        return true;
+    }
+
+    private static boolean isValidRange(List<Integer> pages) {
+        for (int page : pages) {
+            if (!(1 <= page && page <= 400)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     private static boolean isOddPage(Integer integer) {
