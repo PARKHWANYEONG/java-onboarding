@@ -1,13 +1,23 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         Map<String, List<String>> map = nicknameMap(forms);
+        Set<String> emailSet = setEmails(map.values());
 
-        return null;
     }
+
+    private static Set<String> setEmails(Collection<List<String>> values) {
+        Set<String> emailSet = new HashSet<>();
+        values.forEach(v->{
+            if (v.size() != 1) v.forEach(e-> emailSet.add(e));
+        });
+        return emailSet;
+    }
+
 
     private static Map<String, List<String>> nicknameMap(List<List<String>> forms) {
         Map<String, List<String>> map = new HashMap<>();
