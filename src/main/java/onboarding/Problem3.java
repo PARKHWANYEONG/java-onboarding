@@ -14,7 +14,6 @@ public class Problem3 {
         while (num > 0) {
             int digit = num % 10;
             if (digit == 3 || digit == 6 || digit == 9) {
-                System.out.println("digit = " + digit);
                 count++;
             }
             num /= 10;
