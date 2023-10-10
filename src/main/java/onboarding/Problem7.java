@@ -5,12 +5,21 @@ import java.util.*;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
-
         List<String> userFriends = findFriends(user,friends);
         Map<String, Integer> score = togetherFriends(user,userFriends,friends);
+        visitScorePlus(score,visitors,userFriends);
 
-        return userFriends;
+        return result;
     }
+
+    private static void visitScorePlus(Map<String, Integer> score, List<String> visitors, List<String> userFriends) {
+        for (String visitor : visitors) {
+            if (!userFriends.contains(visitor)) {
+                score.put(visitor, score.getOrDefault(visitor, 0) + 1);
+            }
+        }
+    }
+
 
     private static Map<String, Integer> togetherFriends(String user, List<String> userFriends, List<List<String>> friends) {
         Map<String,Integer> score = new HashMap<>();
